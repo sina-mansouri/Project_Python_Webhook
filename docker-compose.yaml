@@ -1,0 +1,18 @@
+---
+
+version: '3.5'
+services:
+  python-app:
+    build: .
+    env_file:
+      - ./.env
+
+    container_name: webhook
+
+    volumes:
+      - ./persistent/webhook/data/:/code/data/
+
+    restart: unless-stopped
+
+    networks:
+      - default
